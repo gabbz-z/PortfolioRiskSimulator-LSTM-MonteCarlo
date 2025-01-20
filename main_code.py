@@ -9,7 +9,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense, Dropout
 
 # Step 2: Load and Prepare Data
-file_path = "merged_portfolio_data.csv"  # Replace with your CSV file
+file_path = "merged_portfolio_data.csv"  
 data = pd.read_csv(file_path, index_col='Date', parse_dates=True)
 
 # Step 2.1: Data Cleaning
@@ -45,7 +45,7 @@ model = Sequential([
     Dropout(0.2),
     LSTM(50, return_sequences=False),
     Dropout(0.2),
-    Dense(y_train.shape[1])  # Output layer for all assets
+    Dense(y_train.shape[1]) 
 ])
 
 model.compile(optimizer='adam', loss='mean_squared_error')
@@ -69,7 +69,7 @@ print(f"Mean Squared Error: {mse:.5f}")
 returns_unscaled = (predictions_unscaled[1:] - predictions_unscaled[:-1]) / predictions_unscaled[:-1] * 100
 
 # Clip or filter returns to remove outliers (optional)
-returns_unscaled = np.clip(returns_unscaled, -10, 10)  # Example: Limit daily returns between -10% and +10%
+returns_unscaled = np.clip(returns_unscaled, -10, 10)  
 
 num_simulations = 1000
 trading_days = 252  # Approximate number of trading days in a year
@@ -101,6 +101,3 @@ print(f"Annual Volatility: {volatility:.2%}")
 risk_free_rate = 0.02  # Assume 2% risk-free rate
 sharpe_ratio = (expected_return - risk_free_rate) / volatility
 print(f"Sharpe Ratio: {sharpe_ratio:.2f}")
-
-#source env/bin/activate
-#cd "/Users/gabby/Desktop/Python and code/Portfolio Risk Simulation"
