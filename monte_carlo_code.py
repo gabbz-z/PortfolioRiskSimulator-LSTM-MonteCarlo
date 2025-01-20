@@ -9,7 +9,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense, Dropout
 
 # Step 2: Load and Prepare Data
-file_path = "merged_portfolio_data.csv"  # Replace with your CSV file
+file_path = "merged_portfolio_data.csv"  
 data = pd.read_csv(file_path, index_col='Date', parse_dates=True)
 
 # Step 2.1: Data Cleaning
